@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% from "macros.html" import select with context %}
+
+{% block title %}
+Find Your TopStop
+{% endblock %}
+{% block content %}
+<p>Real-time Departures</p>
+<p>Route: {{ select('routes') }}</p>
+{% endblock %}
