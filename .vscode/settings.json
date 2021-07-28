@@ -2,10 +2,10 @@
     "python.linting.pycodestyleEnabled": true,
     "python.linting.enabled": true,
     "python.formatting.autopep8Args": [
-        "--max-line-length=100"
+        "--max-line-length=120"
     ],
     "python.linting.pycodestyleArgs": [
-        "--max-line-length=100"
+        "--max-line-length=120"
     ],
     "python.testing.pytestArgs": [
         "topstop_app"
