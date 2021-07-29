@@ -1,6 +1,7 @@
 # test the functionality of TopStop model class
 import pytest
 import time
+import datetime
 import re
 from ..src.topstop import TopStopRequest
 
@@ -17,12 +18,11 @@ def topstop_request():
 # just testing the size and content of the data will be done
 def test_departures(topstop_request):
     data = topstop_request.get_departures()
-    assert data.len() > 0
-    assert re.match(r"\d{2}:\d{2}", data[0])
+    assert (re.search(r"\d+\d*:\d{2}", data[0]) or re.search(r"\d+ Min", data[0]) or re.search(r"Due", data[0]))
 
 
 # We should track if departures are out of date.  As we don't want to have this test run for the full
-# two minutes, we will temproarily change the timeout
+# two minutes, we will temporarily change the timeout
 def test_out_of_date(topstop_request):
     topstop_request.timeout = 5
     time.sleep(6)

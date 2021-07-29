@@ -46,8 +46,7 @@ def test_get_route_stops():
 def test_get_departures():
     next_trip = NexTrip()
     data = next_trip.get_departures(901, 0, "MAAM")
-    # check and see if first value is a time
-    assert re.match(r"\d{2}:\d{2}", data[0])
+    assert (re.search(r"\d+\d*:\d{2}", data[0]) or re.search(r"\d+ Min", data[0]) or re.search(r"Due", data[0]))
 
 
 # Do we handle passing a bad route gracefully
