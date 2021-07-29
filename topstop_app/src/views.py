@@ -1,6 +1,9 @@
 from datetime import datetime
 from flask import Flask, render_template
+from flask.templating import Environment
 from .. import app
+from ..src.nextrip import NexTrip
+from ..src.topstop import TopStopRequest
 
 
 @app.route("/")
@@ -10,7 +13,8 @@ def home():
 
 @app.route("/topstop/")
 def topstop():
-    return render_template("topstop.html")
+    routes = NexTrip().get_routes()
+    return render_template("topstop.html", routes=routes)
 
 
 @app.route("/about/")

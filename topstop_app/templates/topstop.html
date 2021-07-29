@@ -6,5 +6,11 @@ Find Your TopStop
 {% endblock %}
 {% block content %}
 <p>Real-time Departures</p>
-<p>Route: {{ select('routes') }}</p>
+<p>Route:
+    <select name="routes" class="input" id="routes">
+    <option value="" selected>>Pick a Route</option>
+    {% for key, value in routes.items() %}
+    <option value="{{value}}" {{'selected' if value==key else '' }}>{{value}}</option>
+    {% endfor %}
+</select></p>
 {% endblock %}
