@@ -12,7 +12,6 @@
             "env": {
                 "FLASK_APP": "topstop_app.wsgi",
                 "FLASK_ENV": "development",
-                "APP_CONFIG_FILE": "config.py"
             },
             "args": [
                 "run",
