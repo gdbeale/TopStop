@@ -6,50 +6,31 @@ Find Your TopStop
 {% endblock %}
 {% block content %}
 <hr />
-<div class="row">
+<div class="row py-2">
     <div class="col"></div>
     <div class="col-8">
         <h4>Real-time Departures</h4>
     </div>
     <div class="col"></div>
 </div>
-<div class="row">
+<div class="row py-2">
     <div class="col"></div>
     <div class="col-8">
-        <select name="route_select" class="custom-select" id="routes">
-            <option value="" selected>>Route</option>
-            {% for key, value in routes.items() %}
-            <option value="{{value}}" {{'selected' if value==key else '' }}>{{value}}</option>
-            {% endfor %}
-        </select>
+       {{ select("route_select", selected_route, "Select a route", routes) }}
     </div>
     <div class="col"></div>
 </div>
-<div class="row">
+<div class="row py-2">
     <div class="col"></div>
     <div class="col-8">
-        <select name="direction_select" class="custom-select" id="direction">
-            <option value="" selected>Directions</option>
-            {% if directions: %}
-            {% for key, value in directions.items() %}
-            <option value="{{value}}" {{'selected' if value==key else '' }}>{{value}}</option>
-            {% endfor %}
-            {% endif %}
-        </select>
+        {{ select("direction_select", selected_direction, "Select a direction", route_directions) }}
     </div>
     <div class="col"></div>
 </div>
-<div class="row">
+<div class="row py-2">
     <div class="col"></div>
     <div class="col-8">
-        <select name="stop-select" class="custom-select" id="stop">
-            <option value="" selected>Stop</option>
-            {% if directions: %}
-            {% for key, value in stops.items() %}
-            <option value="{{value}}" {{'selected' if value==key else '' }}>{{value}}</option>
-            {% endfor %}
-            {% endif %}
-        </select>
+        {{ select("stop_select", selected_direction, "Select a stop", stops) }}
     </div>
     <div class="col"></div>
 </div>

@@ -1,14 +1,14 @@
-{% macro input(name, value='', type='text', size=20) -%}
-<input type="{{ type }}" name="{{ name }}" value="{{
-        value|e }}" size="{{ size }}">
-{%- endmacro %}
-
-
-{% macro select(name, value='', class='', id='', size=20) -%}
-{% set routes = [4,6,7,8,9,10] %}
-<select name="{{name}}" class="{{class}}" id="{{id}}">
-    {% for route in routes %}
-    <option value="{{route}}" {{'selected' if value==route else '' }}>{{route}}</option>
-    {% endfor %}
-</select>
+{% macro select(name, selected_val, default_val, values) -%}
+    {% if selected_val: %}
+    <select name="{{ name }}" class="custom-select" id="{{ name }}">
+        <option value="selected_val" selected>{{ selected_val }}</option>
+    </select>
+    {% elif values %}
+    <select name="{{ name }}" class="custom-select" id="{{ name }}">
+        <option value="" selected>{{ default_val }}</option>
+        {% for key, value in values.items() %}
+        <option value="{{key}}" {{'selected' if value==key else '' }}>{{value}}</option>
+        {% endfor %}
+    </select>
+    {% endif %}
 {%- endmacro %}
