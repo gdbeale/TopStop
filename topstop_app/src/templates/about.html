@@ -3,5 +3,17 @@
 About Us
 {% endblock %}
 {% block content %}
-<p>We at TopStop are here to get you on the right bus at the right time.</p>
-{% endblock %}
+<div class="jumbotron">
+    <div class="row">
+        <div class="col">
+            <h3>The history of TopStop</h3>
+            <b>TopStop</b> was an application orirginally build by a friend, Shawn Flahave circa 2010. This application was named
+            as an homage to his early "next trip" application. The original TopStop did not have the benifit of ReSTful APIs, but was
+            loaded with data obtained by emailing the director at MetroTransit. Those were different days.
+        </div>
+        <div class="col">
+            <div><img src={{ url_for('static', filename='topstop_orig.jpg' )}} class="img-fluid"></div>
+        </div>
+    </div>
+        
+</div>{% endblock %}
