@@ -39,6 +39,13 @@ def test_home_page_post(test_client, test_topstop_req):
     assert b"real-time MetroTransit bus and train departures" not in response.data
 
 
+# Test topstop page route and validate that the routes have been loaded
+def test_topstop_page(test_client):
+    response = test_client.get('/topstop/')
+    assert response.status_code == 200
+    assert b'<option value="METRO Green Line" >METRO Green Line</option>' in response.data
+
+
 # Test if we correctly initiate a TopStopRequest object when calling for the
 # directions of the route and put that request into the application context
 # Also test that the results match our test request object
