@@ -22,7 +22,7 @@ def test_get_routes():
 # Route 901: Blue line
 # [{"direction_id":0,"direction_name":"Northbound"},{"direction_id":1,"direction_name":"Southbound"}]
 def test_get_route_direction():
-    directions = ["Northbound", "Southbound"]
+    directions = {0: "Northbound", 1: "Southbound"}
     next_trip = NexTrip()
     assert directions == next_trip.get_route_directions(901)
 

@@ -17,13 +17,13 @@ class NexTrip:
     # Return a list of directions.  The list index also functions as the Metro Transit ID for subsequent calls
     # requiring the RouteID
     def get_route_directions(self, route_id):
-        directions = []
+        directions = {}
         res = requests.get(url="https://svc.metrotransit.org/nextripv2/directions/"+str(route_id))
         data = res.json()
         if "Bad Request" == res.reason:
             raise InvalidRouteException(data['detail'])
-        for item in data:
-            directions.append(item['direction_name'])
+        for direction in data:
+            directions[direction["direction_id"]] = direction["direction_name"]
         return directions
 
     # Return a dictionary object of all stops (place codes) for a given route in a given direction.
